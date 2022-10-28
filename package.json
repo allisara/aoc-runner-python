@@ -1,0 +1,17 @@
+{
+  "name": "py-aoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "download": "ts-node src download",
+    "answer": "ts-node src answer"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.11.7",
+    "ts-node": "^10.9.1"
+  }
+}
