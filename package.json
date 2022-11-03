@@ -1,10 +1,12 @@
 {
   "name": "py-aoc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Another AOC runner to solve problems in python. Written in TS because ¯\\_(ツ)_/¯",
   "scripts": {
-    "download": "ts-node --project tsconfig.json src test",
-    "answer": "tsc"
+    "download": "ts-node --project tsconfig.json src download",
+    "answer": "ts-node --project tsconfig.json src answer",
+    "test": "ts-node --project tsconfig.json src test",
+    "test-full": "ts-node --project tsconfig.json src test-full"
   },
   "keywords": [],
   "author": "",

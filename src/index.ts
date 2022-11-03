@@ -1,21 +1,39 @@
-import * as cheerio from "cheerio";
-import { writeFile } from "fs/promises";
-import { NodeHtmlMarkdown } from "node-html-markdown";
-import path from "path";
-import { get, post } from "./services/requests";
+import { submitAnswerController } from "./controllers/answer";
+import { downloadController } from "./controllers/download";
+import { testAnswerController } from "./controllers/test-answer";
+import { MaybeString } from "./types/types";
 
 const args = process.argv.slice(2);
-console.log(args);
+const controller = args[0] as MaybeString;
+const arg = args[1] as MaybeString;
 
-async function testGet() {
-  const vals = await post("https://adventofcode.com/2021/day/18/answer", {
-    level: 1,
-    answer: "wrong answer",
-  });
-  console.log(vals);
+if (controller === "download") {
+  downloadController(arg);
 }
 
-testGet();
+if (controller === "answer") {
+  submitAnswerController(arg);
+}
+
+if (controller == "test") {
+  testAnswerController(true, arg);
+}
+
+if (controller === "test-full") {
+  testAnswerController(false, arg);
+}
+
+// async function testGet() {
+// const res = await get("https://adventofcode.com/2021/day/18");
+// console.log(res);
+// const vals = await post("https://adventofcode.com/2021/day/18/answer", {
+//   level: 1,
+//   answer: "wrong answer",
+// });
+// console.log(vals);
+// }
+
+// testGet();
 
 // const nodeHtmlMarkdown = new NodeHtmlMarkdown();
 

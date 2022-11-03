@@ -1,16 +1,23 @@
 type DateUTCSeconds = string | null;
 
+export type MaybeString = string | undefined;
+
 export interface CachedData {
-  [year: string]: {
-    [questionNum: string]: {
-      blockedUntil: DateUTCSeconds;
-      part1: {
-        solvedAt: DateUTCSeconds;
-        guessedAnswers: string[];
-      };
-      part2: {
-        solvedAt: DateUTCSeconds;
-        guessedAnswers: string[];
+  meta: {
+    blockedUntil: DateUTCSeconds;
+    mostRecent: string;
+  };
+  problems: {
+    [year: string]: {
+      [day: string]: {
+        part1: {
+          solvedAt: DateUTCSeconds;
+          guessedAnswers: string[];
+        };
+        part2: {
+          solvedAt: DateUTCSeconds;
+          guessedAnswers: string[];
+        };
       };
     };
   };
@@ -19,4 +26,9 @@ export interface CachedData {
 export interface PostPayload {
   level: 1 | 2;
   answer: string;
+}
+
+export interface Problem {
+  day: string;
+  part: string;
 }
