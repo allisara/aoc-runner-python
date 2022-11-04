@@ -14,7 +14,9 @@ def p2() -> str:
 # Runs unit test on short dataset
 # Prints answer on long dataset without tests
 if __name__ == '__main__' and not getenv("USE_SHORT"):
+    print("\n-------Program Debug Text-------")
     p2_answer = p2()
+    print("--------------------------------\n")
     assert p2_answer == p2_test_case_answer, f"\n\nfunction p2 returned {'nothing' if p2_answer=='' else p2_answer}\nshould be {p2_test_case_answer}\n\n"
     print(f"\n\nfunction p2 returned {p2_answer}\nAnswer is CORRECT\n\n")
 elif __name__ == '__main__':
