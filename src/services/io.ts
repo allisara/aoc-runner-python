@@ -62,7 +62,7 @@ export function markCorrectGuess(problem: Problem) {
     problem.part === "2" ? `d${problem.day + 1}p1` : `d${problem.day}p2`;
   state.meta.currentProblem = nextProblem;
   state.problems[year][`day${problem.day}`][`part${problem.part}`].solvedAt =
-    Date.now().toLocaleString();
+    new Date().toLocaleString();
 
   updateJSON();
 }

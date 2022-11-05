@@ -20,4 +20,5 @@ if __name__ == '__main__' and not getenv("USE_FULL"):
     assert p2_answer == p2_test_case_answer, f"\n\nfunction p2 returned {'nothing' if p2_answer=='' else p2_answer}\nshould be {p2_test_case_answer}"
     print(f"function p2 returned {p2_answer}\nAnswer is CORRECT")
 elif __name__ == '__main__':
-    print(p2())
+    p2_answer = "\n" + p2()
+    print(p2_answer)
