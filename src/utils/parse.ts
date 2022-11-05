@@ -7,6 +7,6 @@ export function parseDayPart(str?: string): Problem | undefined {
     return;
   }
 
-  const [day, part] = str.slice(1).split("p") as [string, "1" | "2"];
+  const [day, part] = str.slice(1).split("d") as [string, "1" | "2"];
   return { day, part };
 }
