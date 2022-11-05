@@ -24,11 +24,11 @@ export interface CachedData {
 }
 
 export interface PostPayload {
-  level: 1 | 2;
+  level: "1" | "2";
   answer: string;
 }
 
 export interface Problem {
   day: string;
-  part: string;
+  part: "1" | "2";
 }

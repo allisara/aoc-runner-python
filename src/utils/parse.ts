@@ -1,4 +1,4 @@
-import { MaybeString, Problem } from "../types/types";
+import { Problem } from "../types/types";
 
 export function parseDayPart(str?: string): Problem | undefined {
   // input example => d12p2
@@ -7,6 +7,6 @@ export function parseDayPart(str?: string): Problem | undefined {
     return;
   }
 
-  const [day, part] = str.slice(1).split("p");
+  const [day, part] = str.slice(1).split("p") as [string, "1" | "2"];
   return { day, part };
 }

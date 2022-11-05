@@ -11,5 +11,6 @@ export function extractPartTwo(html: string): string {
 }
 
 export function extractAnswerStatus(html: string): string {
-  return html;
+  const $ = load(html);
+  return $("main > article > p").text() || "";
 }

@@ -1,4 +1,4 @@
-import { CachedData } from "../types/types";
+import { CachedData, Problem } from "../types/types";
 import stateJson from "../assets/state.json";
 import { copyFile, writeFile } from "fs/promises";
 import { join } from "path";
@@ -41,6 +41,38 @@ export async function createFolder(path: string): Promise<void> {
 export function fileWriter(path: string) {
   return (filename: string, body: any) =>
     writeFile(path + filename, body, "utf-8");
+}
+
+export function upsertGuess(answer: string, problem: Problem): boolean {
+  const guesses =
+    state.problems[year][`day${problem.day}`][`part${problem.part}`]
+      .guessedAnswers;
+
+  if (guesses.includes(answer)) {
+    return false;
+  }
+
+  guesses.push(answer);
+  updateJSON();
+  return true;
+}
+
+export function markCorrectGuess(problem: Problem) {
+  const nextProblem =
+    problem.part === "2" ? `d${problem.day + 1}p1` : `d${problem.day}p2`;
+  state.meta.currentProblem = nextProblem;
+  state.problems[year][`day${problem.day}`][`part${problem.part}`].solvedAt =
+    Date.now().toLocaleString();
+
+  updateJSON();
+}
+
+export function getPartOfDayToSubmit(day: string) {
+  if (state.problems[year][`day${day}`].part2.solvedAt) {
+    return null;
+  } else if (state.problems[year][`day${day}`].part1.solvedAt) {
+    return "2";
+  } else return "1";
 }
 
 export async function copyBoilerplateFiles(problemFolder: string) {
