@@ -5,7 +5,7 @@ export type MaybeString = string | undefined;
 export interface CachedData {
   meta: {
     blockedUntil: DateUTCSeconds;
-    mostRecent: string;
+    currentProblem: string;
   };
   problems: {
     [year: string]: {
