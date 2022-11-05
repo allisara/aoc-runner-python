@@ -57,6 +57,16 @@ export function upsertGuess(answer: string, problem: Problem): boolean {
   return true;
 }
 
+export function removeGuess(answer: string, problem: Problem): void {
+  state.problems[year][`day${problem.day}`][
+    `part${problem.part}`
+  ].guessedAnswers = state.problems[year][`day${problem.day}`][
+    `part${problem.part}`
+  ].guessedAnswers.filter((guess) => guess !== answer);
+
+  updateJSON();
+}
+
 export function markCorrectGuess(problem: Problem) {
   const nextProblem =
     problem.part === "2" ? `d${problem.day + 1}p1` : `d${problem.day}p2`;

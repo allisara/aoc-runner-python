@@ -6,6 +6,7 @@ import {
   fileWriter,
   getPartOfDayToSubmit,
   markCorrectGuess,
+  removeGuess,
   upsertGuess,
 } from "../services/io";
 import { get, post } from "../services/requests";
@@ -52,6 +53,10 @@ export async function submitAnswerController(day: MaybeString) {
   console.log("\n" + status);
 
   if (!status.includes("That's the right answer")) return;
+  if (status.includes("You gave an answer too recently")) {
+    removeGuess(answer, { day, part });
+    return;
+  }
 
   markCorrectGuess({ day, part });
 
