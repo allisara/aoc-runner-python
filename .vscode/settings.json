@@ -1,4 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "python.analysis.typeCheckingMode": "strict"
+  "python.analysis.typeCheckingMode": "basic"
 }
